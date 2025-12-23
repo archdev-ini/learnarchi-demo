@@ -50,6 +50,20 @@
   perspective: 1000px;
   position: sticky;
   top: 150px;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.imageVisible {
+  opacity: 1;
+  transform: rotateY(-10deg) rotateX(5deg);
+  transition: opacity 0.5s ease-out, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imageHidden {
+  opacity: 0;
+  transform: translateY(20px) rotateY(-10deg) rotateX(5deg);
 }
 
 .communityImage {
@@ -58,7 +72,6 @@
   border-radius: 20px;
   box-shadow: 0 20px 50px rgba(77, 108, 255, 0.15);
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: rotateY(-10deg) rotateX(5deg);
 }
 
 .communityImage:hover {

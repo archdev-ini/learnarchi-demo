@@ -25,10 +25,35 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://learnarchi.com';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: "LearnArchi | Beyond the Classroom",
   description:
     "A community built by and for architecture students — focused on clear thinking, honest process, and confident growth.",
+  openGraph: {
+    title: "LearnArchi | Beyond the Classroom",
+    description: "A community built by and for architecture students — focused on clear thinking, honest process, and confident growth.",
+    url: baseUrl,
+    siteName: "LearnArchi",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "LearnArchi Community",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LearnArchi | Beyond the Classroom",
+    description: "A community built by and for architecture students — focused on clear thinking, honest process, and confident growth.",
+    images: ["/images/og-image.png"],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

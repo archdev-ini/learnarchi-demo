@@ -33,9 +33,21 @@
   display: flex;
   justify-content: center;
   perspective: 1200px;
+  min-height: 200px;
   max-height: 300px;
   overflow: hidden;
   border-radius: 16px;
+}
+
+.imageVisible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.imageHidden {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .sectionImage {

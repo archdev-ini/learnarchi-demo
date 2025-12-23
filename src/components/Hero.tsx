@@ -1,7 +1,13 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
+import skeletonStyles from './Skeleton.module.css';
 
 const Hero = () => {
+  const [imgState, setImgState] = useState<'loading' | 'loaded' | 'error'>('loading');
+
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
@@ -20,15 +26,23 @@ const Hero = () => {
           <span>GLOBAL COMMUNITY</span>
         </div>
       </div>
-      <div className={styles.imageContainer}>
-        <Image
-          src="/images/hero-workspace.png"
-          alt="Architectural workspace"
-          width={600}
-          height={600}
-          className={styles.heroImage}
-          priority
-        />
+      <div className={`${styles.imageContainer} ${imgState === 'loading' ? skeletonStyles.shimmer : ''}`}>
+        {imgState === 'error' ? (
+          <div className={skeletonStyles.imagePlaceholder}>
+            Image Unavailable
+          </div>
+        ) : (
+          <Image
+            src="/images/hero-workspace.png"
+            alt="Architectural workspace"
+            width={600}
+            height={600}
+            className={`${styles.heroImage} ${imgState === 'loaded' ? styles.imageVisible : styles.imageHidden}`}
+            priority
+            onLoad={() => setImgState('loaded')}
+            onError={() => setImgState('error')}
+          />
+        )}
       </div>
       <div className={styles.scrollIndicator}>
         <div className={styles.mouse}></div>

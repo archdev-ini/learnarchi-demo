@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './WhatWeDo.module.css';
+import skeletonStyles from './Skeleton.module.css';
 
 const offerings = [
   "Weekly short classes on tools, thinking, and representation",
@@ -10,6 +14,8 @@ const offerings = [
 ];
 
 const WhatWeDo = () => {
+  const [imgState, setImgState] = useState<'loading' | 'loaded' | 'error'>('loading');
+
   return (
     <section id="benefits" className={styles.section}>
       <div className={styles.container}>
@@ -25,14 +31,22 @@ const WhatWeDo = () => {
               ))}
             </div>
           </div>
-          <div className={styles.imageWrapper}>
-            <Image 
-              src="/images/community.png" 
-              alt="Community Collaboration" 
-              width={500}
-              height={500}
-              className={styles.communityImage}
-            />
+          <div className={`${styles.imageWrapper} ${imgState === 'loading' ? skeletonStyles.shimmer : ''}`}>
+            {imgState === 'error' ? (
+              <div className={skeletonStyles.imagePlaceholder}>
+                Illustration Unavailable
+              </div>
+            ) : (
+              <Image 
+                src="/images/community.png" 
+                alt="Community Collaboration" 
+                width={500}
+                height={500}
+                className={`${styles.communityImage} ${imgState === 'loaded' ? styles.imageVisible : styles.imageHidden}`}
+                onLoad={() => setImgState('loaded')}
+                onError={() => setImgState('error')}
+              />
+            )}
           </div>
         </div>
       </div>

@@ -1,45 +1,82 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import styles from './PWARegister.module.css';
 
 export default function PWARegister() {
+  const [showUpdate, setShowUpdate] = useState(false);
+  const [waitingWorker, setWaitingWorker] = useState<ServiceWorker | null>(null);
+
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/sw.js')
-          .then((registration) => {
-            console.log('Service Worker registered:', registration);
-            
-            // Check for updates periodically
-            setInterval(() => {
-              registration.update();
-            }, 60000); // Check every minute
-          })
-          .catch((error) => {
-            console.log('Service Worker registration failed:', error);
-          });
-      });
-    }
+    if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
 
-    // Handle install prompt
-    const handleBeforeInstall = (e: Event) => {
-      e.preventDefault();
-      console.log('PWA install prompt available');
+    const registerServiceWorker = async () => {
+      try {
+        const registration = await navigator.serviceWorker.register('/sw.js');
+        
+        console.log('Service Worker registered:', registration);
+
+        // Check for updates on load
+        if (registration.waiting) {
+          setWaitingWorker(registration.waiting);
+          setShowUpdate(true);
+        }
+
+        // Listen for new waiting worker
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                setWaitingWorker(newWorker);
+                setShowUpdate(true);
+              }
+            });
+          }
+        });
+
+        // Periodic update check
+        const updateInterval = setInterval(() => {
+          registration.update();
+        }, 60000); // Check every minute
+
+        return () => clearInterval(updateInterval);
+      } catch (error) {
+        console.log('Service Worker registration failed:', error);
+      }
     };
 
-    const handleAppInstalled = () => {
-      console.log('PWA was installed');
+    registerServiceWorker();
+
+    // Listen for controllerchange to reload
+    const handleControllerChange = () => {
+      window.location.reload();
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
-    window.addEventListener('appinstalled', handleAppInstalled);
+    navigator.serviceWorker.addEventListener('controllerchange', handleControllerChange);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
-      window.removeEventListener('appinstalled', handleAppInstalled);
+      navigator.serviceWorker.removeEventListener('controllerchange', handleControllerChange);
     };
   }, []);
 
-  return null;
+  const handleUpdate = () => {
+    if (waitingWorker) {
+      waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+      setShowUpdate(false);
+    }
+  };
+
+  return (
+    <>
+      {showUpdate && (
+        <div className={styles.toast}>
+          <span className={styles.text}>New architectural updates available!</span>
+          <button onClick={handleUpdate} className={styles.button}>
+            Reload to Update
+          </button>
+        </div>
+      )}
+    </>
+  );
 }

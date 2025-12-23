@@ -133,6 +133,24 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.share {
+  background: var(--color-light-bg);
+  border: 2px solid var(--color-border);
+  color: var(--color-foreground);
+  width: 100%;
+}
+
+.share:hover {
+  background: var(--color-background);
+  transform: translateY(-4px);
+  border-color: var(--color-accent-blue);
+  box-shadow: 0 12px 32px rgba(77, 108, 255, 0.15);
+}
+
+.share .icon {
+  color: var(--color-accent-blue);
+}
+
 .icon {
   width: 40px;
   height: 40px;

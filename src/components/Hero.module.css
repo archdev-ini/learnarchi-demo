@@ -26,6 +26,20 @@
   align-items: center;
   justify-content: center;
   perspective: 1000px;
+  min-height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.imageVisible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.imageHidden {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .heroImage {

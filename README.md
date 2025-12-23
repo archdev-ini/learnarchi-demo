@@ -181,13 +181,38 @@ export default function Home() {
 }
 ```
 
-## 📱 Responsive Breakpoints
+## 🔐 Environment Variables
 
-- **Desktop**: 1200px+
-- **Tablet**: 768px - 1199px
-- **Mobile**: < 768px
+For production deployments (Vercel, Netlify, etc.), configure the following environment variables.
 
-All components include mobile-optimized styles using CSS media queries.
+### **PWA & Push Notifications**
+
+Generate these using `npx web-push generate-vapid-keys`.
+
+| Variable                       | Scope  | Description                                          |
+| :----------------------------- | :----- | :--------------------------------------------------- |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | Public | Used to subscribe users to push notifications.       |
+| `VAPID_PRIVATE_KEY`            | Secret | Used to sign and send push messages from the server. |
+
+### **Community & Social URLs**
+
+Move these to ENV variables to update links without code changes.
+
+| Variable                     | Current Value                          | Description                      |
+| :--------------------------- | :------------------------------------- | :------------------------------- |
+| `NEXT_PUBLIC_TELEGRAM_LINK`  | `https://t.me/learnarchi`              | Primary Telegram community link. |
+| `NEXT_PUBLIC_WHATSAPP_LINK`  | `https://chat.whatsapp.com/learnarchi` | Primary WhatsApp community link. |
+| `NEXT_PUBLIC_INSTAGRAM_LINK` | `#`                                    | Instagram profile URL.           |
+| `NEXT_PUBLIC_TWITTER_LINK`   | `#`                                    | Twitter/X profile URL.           |
+| `NEXT_PUBLIC_CONTACT_EMAIL`  | `hello@learnarchi.com`                 | Primary contact email address.   |
+
+### **SEO & Identity**
+
+| Variable               | Usage    | Description                                              |
+| :--------------------- | :------- | :------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Metadata | Your production domain (e.g., `https://learnarchi.com`). |
+
+> **Note**: Variables prefixed with `NEXT_PUBLIC_` are accessible in the browser. Secret variables (like `VAPID_PRIVATE_KEY`) must **not** have this prefix.
 
 ## 🚀 Deployment
 
