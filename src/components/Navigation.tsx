@@ -7,6 +7,11 @@ import JoinModal from './JoinModal';
 
 const Navigation = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -15,12 +20,31 @@ const Navigation = () => {
           <div className={styles.logo}>
             <Link href="/">LEARNARCHI</Link>
           </div>
-          <div className={styles.links}>
-            <Link href="#mission" className={styles.link}>Mission</Link>
-            <Link href="#method" className={styles.link}>Method</Link>
-            <Link href="#benefits" className={styles.link}>Benefits</Link>
-            <Link href="#vision" className={styles.link}>Vision</Link>
-            <button onClick={() => setIsModalOpen(true)} className={styles.cta}>
+          
+          {/* Hamburger Button */}
+          <button 
+            className={`${styles.hamburger} ${isMobileMenuOpen ? styles.active : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          {/* Desktop & Mobile Menu */}
+          <div className={`${styles.links} ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
+            <Link href="#mission" className={styles.link} onClick={handleLinkClick}>Mission</Link>
+            <Link href="#method" className={styles.link} onClick={handleLinkClick}>Method</Link>
+            <Link href="#benefits" className={styles.link} onClick={handleLinkClick}>Benefits</Link>
+            <Link href="#vision" className={styles.link} onClick={handleLinkClick}>Vision</Link>
+            <button 
+              onClick={() => {
+                setIsModalOpen(true);
+                setIsMobileMenuOpen(false);
+              }} 
+              className={styles.cta}
+            >
               Join Community
             </button>
           </div>

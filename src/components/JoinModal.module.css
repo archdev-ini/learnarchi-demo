@@ -174,6 +174,7 @@
   .modal {
     padding: 32px 24px;
     border-radius: 20px;
+    max-width: 90%;
   }
   
   .title {
@@ -187,10 +188,14 @@
   .closeButton {
     top: 16px;
     right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
   }
   
   .socialButton {
     padding: 18px 20px;
+    gap: 16px;
   }
   
   .icon {
@@ -204,5 +209,50 @@
   
   .buttonSubtext {
     font-size: 12px;
+  }
+  
+  .footer {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 10px;
+  }
+  
+  .modal {
+    padding: 24px 16px;
+    max-width: 95%;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .subtitle {
+    font-size: 12px;
+  }
+  
+  .socialButton {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .buttonTitle {
+    font-size: 14px;
+  }
+  
+  .buttonSubtext {
+    font-size: 11px;
+  }
+  
+  .footer {
+    font-size: 11px;
   }
 }

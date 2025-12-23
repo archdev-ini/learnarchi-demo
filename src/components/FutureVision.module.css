@@ -79,9 +79,41 @@
   
   .sectionTitle {
     font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
   }
   
   .statement {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .list {
+    gap: var(--spacing-sm);
+  }
+  
+  .item {
+    padding: var(--spacing-sm);
+  }
+  
+  .text {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .statement {
+    font-size: var(--font-size-sm);
+  }
+  
+  .text {
+    font-size: 12px;
   }
 }

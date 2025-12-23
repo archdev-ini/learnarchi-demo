@@ -76,10 +76,46 @@
   
   .sectionTitle {
     font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .subtitle {
+    font-size: 11px;
+    margin-bottom: var(--spacing-md);
   }
   
   .grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
+  
+  .cardTitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .cardDescription {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .grid {
+    gap: var(--spacing-sm);
+  }
+  
+  .card {
+    padding: var(--spacing-sm);
   }
 }

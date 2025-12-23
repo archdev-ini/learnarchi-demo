@@ -1,0 +1,73 @@
+.installButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--color-accent-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(77, 108, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInUp 0.5s ease-out;
+}
+
+.installButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(77, 108, 255, 0.5);
+  background: #3d5ce6;
+}
+
+.installButton:active {
+  transform: translateY(-2px);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .installButton {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+  
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .installButton {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+}

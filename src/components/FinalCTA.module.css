@@ -95,10 +95,46 @@
   
   .headline {
     font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .description {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .mission {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
   }
   
   .button {
     width: 100%;
     text-align: center;
+    padding: 14px 28px;
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .headline {
+    font-size: clamp(1.5rem, 10vw, 2.5rem);
+  }
+  
+  .description {
+    font-size: var(--font-size-sm);
+  }
+  
+  .mission {
+    font-size: 12px;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    font-size: 12px;
   }
 }

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './WhatWeDo.module.css';
 
 const offerings = [
@@ -12,13 +13,27 @@ const WhatWeDo = () => {
   return (
     <section id="benefits" className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>WHAT YOU GET <span className={styles.accent}>NOW</span></h2>
-        <div className={styles.grid}>
-          {offerings.map((item, index) => (
-            <div key={index} className={styles.card}>
-              <p className={styles.text}>{item}</p>
+        <div className={styles.layout}>
+          <div className={styles.textContent}>
+            <h2 className={styles.sectionTitle}>WHAT YOU GET <span className={styles.accent}>NOW</span></h2>
+            <p className={styles.subtitle}>Community Benefits</p>
+            <div className={styles.grid}>
+              {offerings.map((item, index) => (
+                <div key={index} className={styles.card}>
+                  <p className={styles.text}>{item}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className={styles.imageWrapper}>
+            <Image 
+              src="/images/community.png" 
+              alt="Community Collaboration" 
+              width={500}
+              height={500}
+              className={styles.communityImage}
+            />
+          </div>
         </div>
       </div>
     </section>
