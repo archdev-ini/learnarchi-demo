@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "../components/ClientLayout";
@@ -17,6 +17,14 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#4d6cff",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
   title: "LearnArchi | Beyond the Classroom",
   description:
@@ -34,13 +42,6 @@ export const metadata: Metadata = {
     apple: [
       { url: "/icons/icon-152x152.png", sizes: "152x152", type: "image/png" },
     ],
-  },
-  themeColor: "#4d6cff",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
   },
 };
 
