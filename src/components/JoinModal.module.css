@@ -1,0 +1,208 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  padding: 48px;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--color-muted);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: var(--color-light-bg);
+  color: var(--color-foreground);
+  transform: rotate(90deg);
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.telegram {
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  color: #ffffff;
+}
+
+.telegram:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 136, 204, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+}
+
+.whatsapp:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.buttonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.buttonTitle {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.buttonSubtext {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.footer {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  text-align: center;
+  margin: 0;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+  
+  .closeButton {
+    top: 16px;
+    right: 16px;
+  }
+  
+  .socialButton {
+    padding: 18px 20px;
+  }
+  
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .buttonTitle {
+    font-size: 16px;
+  }
+  
+  .buttonSubtext {
+    font-size: 12px;
+  }
+}

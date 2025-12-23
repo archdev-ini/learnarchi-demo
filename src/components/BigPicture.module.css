@@ -1,0 +1,13 @@
+.section {
+  display: none;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.text {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+}
