@@ -2,6 +2,7 @@
   "name": "LearnArchi - Beyond the Classroom",
   "short_name": "LearnArchi",
   "description": "A global community built by and for architecture students—focused on clear thinking, honest process, and confident growth.",
+  "id": "/",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -84,6 +85,16 @@
           "sizes": "96x96"
         }
       ]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+archi",
+      "url": "/?archi=%s"
+    },
+    {
+      "protocol": "web+learn",
+      "url": "/?learn=%s"
     }
   ]
 }

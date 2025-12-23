@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   title: "LearnArchi | Beyond the Classroom",
   description:
     "A community built by and for architecture students — focused on clear thinking, honest process, and confident growth.",
-  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -52,6 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
+      </head>
       <body className={`${inter.variable} ${sourceSerif.variable}`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
